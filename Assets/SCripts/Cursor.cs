@@ -30,18 +30,6 @@ public class CursorFollower : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Wall2"))
-        {
-            Debug.Log("Курсор столкнулся со стеной, возвращаем на стартовую позицию.");
-            SceneManager.UnloadSceneAsync("Level2");
-            SceneManager.LoadSceneAsync("Menu");
-        }
-        if (collision.gameObject.CompareTag("Wall1"))
-        {
-            Debug.Log("Курсор столкнулся со стеной, возвращаем на стартовую позицию.");
-            SceneManager.UnloadSceneAsync("Level1");
-            SceneManager.LoadSceneAsync("Menu");
-        }
         if (collision.gameObject.CompareTag("Checkpoint"))
         {
             SceneManager.UnloadSceneAsync("Level1");
@@ -51,6 +39,18 @@ public class CursorFollower : MonoBehaviour
         {
             SceneManager.UnloadSceneAsync("Level2");
             SceneManager.LoadSceneAsync("Jumpscare");
+        }
+        if (collision.gameObject.CompareTag("Wall1"))
+        {
+            Debug.Log("Курсор столкнулся со стеной, возвращаем на стартовую позицию.");
+            SceneManager.UnloadSceneAsync("Level1");
+            SceneManager.LoadSceneAsync("Menu");
+        }
+        if (collision.gameObject.CompareTag("Wall2"))
+        {
+            Debug.Log("Курсор столкнулся со стеной, возвращаем на стартовую позицию.");
+            SceneManager.UnloadSceneAsync("Level2");
+            SceneManager.LoadSceneAsync("Menu");
         }
     }
 }
